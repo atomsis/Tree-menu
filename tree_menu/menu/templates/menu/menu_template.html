@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul>
+        {% for item in menu_items %}
+            <li class="{% is_active item.url current_path %}">
+                <a href="{% if item.named_url %}{% url item.url %}{% else %}{{ item.url }}{% endif %}">{{ item.name }}</a>
+                {% if item.expanded %}
+                    <ul>
+                        {% for child in item.children %}
+                            <li class="{% is_active child.url current_path %}">
+                                <a href="{% if child.named_url %}{% url child.url %}{% else %}{{ child.url }}{% endif %}">{{ child.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

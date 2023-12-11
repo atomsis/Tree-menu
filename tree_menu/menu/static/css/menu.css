@@ -1,0 +1,42 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+li.active a {
+    color: red;
+}
+
+
+ul ul {
+    display: none;
+    position: absolute;
+    margin-top: 5px;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+li:hover > ul {
+    display: block;
+}
+
+ul ul li {
+    display: block;
+}
+
+
+ul ul li.active a {
+    color: blue;
+}

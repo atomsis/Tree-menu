@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Page Title{% endblock %}
+
+{% block content %}
+    <h1>Welcome to Your Page</h1>
+    {% draw_menu 'main_menu' %}
+    {% include 'menu_template.html' %}
+
+    {% draw_menu 'secondary_menu' %}
+    {% include 'menu_template.html' %}
+
+{% endblock %}
