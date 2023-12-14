@@ -4,10 +4,7 @@
 
 {% block content %}
     <h1>Welcome to Your Page</h1>
-    {% draw_menu 'main_menu' %}
-    {% include 'menu_template.html' %}
+    {% include 'menu/menu_template.html' with menu_name='main_menu' current_path=request.path %}
 
-    {% draw_menu 'secondary_menu' %}
-    {% include 'menu_template.html' %}
-
+    {% include 'menu/menu_template.html' with menu_name='secondary_menu' current_path=request.path %}
 {% endblock %}

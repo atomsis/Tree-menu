@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 
+{% load menu_tags %}
+
 {% block content %}
-    <ul>
-        {% for item in menu_items %}
-            <li class="{% is_active item.url current_path %}">
-                <a href="{% if item.named_url %}{% url item.url %}{% else %}{{ item.url }}{% endif %}">{{ item.name }}</a>
+<ul>
+    {% for item in menu_items %}
+        <li class="{% is_active item.url current_path %}">
+            <a href="{% if item.named_url %}{% url item.url %}{% else %}{{ item.url }}{% endif %}">{{ item.title }}</a>
+            {% if item.children.exists %}
                 {% if item.expanded %}
-                    <ul>
-                        {% for child in item.children %}
-                            <li class="{% is_active child.url current_path %}">
-                                <a href="{% if child.named_url %}{% url child.url %}{% else %}{{ child.url }}{% endif %}">{{ child.name }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
+                    {% with children=item.children.all %}
+                        {% include 'menu_app/menu_template.html' %}
+                    {% endwith %}
                 {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
 {% endblock %}
